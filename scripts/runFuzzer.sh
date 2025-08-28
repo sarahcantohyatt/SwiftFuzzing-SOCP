@@ -1,6 +1,16 @@
 #!/bin/sh
 flag=$1
+#copy the seed files first
 cd ..
+mkdir testprograms
+cd swift-programs
+filenames=`ls *.swift`
+cd ..
+for file in $filenames
+do
+	cp swift-programs/$file testprograms/$file
+done
+
 yourfilenames=`ls testprograms/*.swift`
 for eachfile in $yourfilenames
 do
