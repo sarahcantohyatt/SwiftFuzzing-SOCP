@@ -50,13 +50,13 @@ The mode will also create a `.csv` file named `results.csv` that is located in `
 
 #### Advanced Configuration (custom configuration)
 Navigate to `SwiftFuzzing-SOCP/scripts`  
-From here you can run `timeout -s [TIME] ./run_fuzzer_get_inputs.sh -[LEVEL]`  
+From here you can run `timeout [TIME] ./run_fuzzer_get_inputs.sh -[LEVEL]`  
 Replace `[TIME]` with an integer representing the number of seconds until timeout and replacing `[LEVEL]` with your choice of fuzzer level, options are 1, 2, or 3.  
 
 This will take each seed file in `SwiftFuzing-SOCP/swift-programs` and run it through the desired level of mutation for the desired amount of time.  
 After completion of this command we will have all generated mutants available in a `.zip` folder named `output.zip` that is located in the `SwiftFuzzing-SOCP/scripts` directory.  
 
-To run the generated mutants against swiftc you will need to run `./run_zipfile.sh` or `timeout -s [TIME] ./run_zipfile.sh` if a timeout is desired replacing `[TIME]` with the desired time in seconds.  
+To run the generated mutants against swiftc you will need to run `./run_zipfile.sh` or `timeout [TIME] ./run_zipfile.sh` if a timeout is desired replacing `[TIME]` with the desired time in seconds.  
 This will run each mutant program against swiftc. If there is a mutant that does not compile it will be left in the `SwiftFuzzing-SOCP/scripts` directory along with its accompanying compiler errors or compiler crash information (in the respective `.output` file).
 
 
