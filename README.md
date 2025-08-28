@@ -4,7 +4,10 @@ Research prototype first seen in this [research paper](10.1109/icst62969.2025.10
 
 ## Installation instructions:
 
-Clone this github repository by running this command: `git clone https://github.com/sarahcantohyatt/SwiftFuzzing-SOCP.git`
+Clone this github repository by running this command: 
+```
+git clone https://github.com/sarahcantohyatt/SwiftFuzzing-SOCP.git
+```
 
 ### MacOS(Recommended) Requirements: 
 1. Java installation: https://www.oracle.com/java/technologies/downloads/#jdk24-mac  
@@ -32,7 +35,10 @@ Those can be removed when running your own fuzzing campaign.
 ### 2. Running the fuzzer 
 
 #### Recommended Configuration (pre-configured fuzzing campaign)
-Navigate to `SwiftFuzzing-SOCP/scripts` and run `./run_fully_automated.sh`  
+Navigate to `SwiftFuzzing-SOCP/scripts` and run 
+```
+./run_fully_automated.sh
+```
 There will be console output that displays which seed file is currently being processed and at which level.  
 After successful completion of the fuzzing campaign you should see a message that says:  
 "Fuzzing campaign finished! Check SwiftFuzzing-SOCP/triggers for any bug triggers."
@@ -50,13 +56,29 @@ The mode will also create a `.csv` file named `results.csv` that is located in `
 
 #### Advanced Configuration (custom configuration)
 Navigate to `SwiftFuzzing-SOCP/scripts`  
-From here you can run `timeout [TIME] ./run_fuzzer_get_inputs.sh -[LEVEL]`  
-Replace `[TIME]` with an integer representing the number of seconds until timeout and replacing `[LEVEL]` with your choice of fuzzer level, options are 1, 2, or 3.  
+From here you can run 
+```
+./run_fuzzer_get_inputs.sh -[LEVEL]
+```
+or (if a timeout is desired)
+```
+timeout [TIME] ./run_fuzzer_get_inputs.sh -[LEVEL]
+```
+Replace `[TIME]` with an integer representing the number of seconds until timeout.  
+Replace `[LEVEL]` with your choice of fuzzer level, options are 1, 2, or 3.  
 
 This will take each seed file in `SwiftFuzing-SOCP/swift-programs` and run it through the desired level of mutation for the desired amount of time.  
 After completion of this command we will have all generated mutants available in a `.zip` folder named `output.zip` that is located in the `SwiftFuzzing-SOCP/scripts` directory.  
 
-To run the generated mutants against swiftc you will need to run `./run_zipfile.sh` or `timeout [TIME] ./run_zipfile.sh` if a timeout is desired replacing `[TIME]` with the desired time in seconds.  
+To run the generated mutants against swiftc you will need to run 
+```
+./run_zipfile.sh
+```
+or (if a timeout is desired)
+```
+timeout [TIME] ./run_zipfile.sh
+```
+Replace `[TIME]` with the desired time in seconds.  
 This will run each mutant program against swiftc. If there is a mutant that does not compile it will be left in the `SwiftFuzzing-SOCP/scripts` directory along with its accompanying compiler errors or compiler crash information (in the respective `.output` file).
 
 
